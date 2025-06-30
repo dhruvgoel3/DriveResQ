@@ -10,8 +10,8 @@ class SplashScreen extends GetView<SplashController> {
       backgroundColor: Colors.white,
       body: Center(
         child: Image.asset(
-          "assets/logo.png", // Add logo in pubspec.yaml
-          width: 150,
+          "assets/car mechanic.png",height: 200, // Add logo in pubspec.yaml
+          width: 400,
         ),
       ),
     );
