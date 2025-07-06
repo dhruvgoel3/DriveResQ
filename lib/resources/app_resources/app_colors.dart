@@ -1,9 +1,6 @@
 import 'dart:ui';
 
-class AppColors {
-  AppColors._();
-
-  static const Color profileInfoBoxColor = Color(0xff16181b);
-  // static const Color blackcolor = Color();
-
+class AppColors
+{
+  static Color blackcolor = Color(0xff000000);
 }
