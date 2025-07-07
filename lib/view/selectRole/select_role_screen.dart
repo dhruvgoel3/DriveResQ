@@ -18,23 +18,21 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            SelectUserContainer(
-              title: "Mechanic",
-              onPressed: () {},
-              height: screenHeight * 0.2,
-            ),
-            SizedBox(height: 10),
-            SelectUserContainer(
-              title: "Driver  ",
-              onPressed: () {},
-              height: screenHeight * 0.2,
-            ),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SelectUserContainer(
+            title: "Mechanic",
+            onPressed: () {},
+            height: screenHeight * 0.2,
+          ),
+          SizedBox(height: 10),
+          SelectUserContainer(
+            title: "Driver  ",
+            onPressed: () {},
+            height: screenHeight * 0.2,
+          ),
+        ],
       ),
     );
   }
