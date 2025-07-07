@@ -1,5 +1,6 @@
 import 'package:driveresq/resources/app_resources/app_colors.dart';
 import 'package:driveresq/resources/app_resources/text_styles.dart';
+import 'package:driveresq/viewmodel/role_selection_viewmodel.dart';
 import 'package:driveresq/widgets/components/user_role_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,6 +14,7 @@ class SelectRoleScreen extends StatefulWidget {
 }
 
 class _SelectRoleScreenState extends State<SelectRoleScreen> {
+  final controller = Get.put(RoleSelectionViewModel());
   double screenWidth = Get.width;
   double screenHeight = Get.height;
   @override
@@ -25,19 +27,23 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Select your role",style: AppTextStyles.bodyText,),
-            SizedBox(height: screenHeight*0.07),
+            Text("Select your role", style: AppTextStyles.bodyText),
+            SizedBox(height: screenHeight * 0.07),
 
             SelectUserContainer(
               title: "Mechanic",
-              onPressed: () {},
+              onPressed: () {
+                controller.navigateToMechanicSignup();
+              },
               height: screenHeight * 0.2,
               width: screenWidth * 0.9,
             ),
             SizedBox(height: 20),
             SelectUserContainer(
               title: "Driver  ",
-              onPressed: () {},
+              onPressed: () {
+                controller.navigateToDriverSignup();
+              },
               height: screenHeight * 0.2,
               width: screenWidth * 0.9,
             ),

@@ -1,3 +1,7 @@
+import 'package:driveresq/view/Mechanic/Chat/mechanic_chat_module.dart';
+import 'package:driveresq/view/Mechanic/History/mechanic_history_screen_module.dart';
+import 'package:driveresq/view/Mechanic/Home/mechanic_home_module.dart';
+import 'package:driveresq/view/Mechanic/Profile/profile_module.dart';
 import 'package:flutter/material.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 
@@ -10,7 +14,10 @@ class _FloatingNavBarAppState extends State<MechanicBottomnavbar> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
-
+    MechanicHomeModule(),
+    MechanicHistoryScreenModule(),
+    MechanicChatScreenModule(),
+    MechanicProfileModule(),
   ];
 
   @override

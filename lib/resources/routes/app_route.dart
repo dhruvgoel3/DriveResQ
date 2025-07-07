@@ -3,6 +3,7 @@ import 'package:driveresq/view/Mechanic/Chat/mechanic_chat_module.dart';
 import 'package:driveresq/view/Mechanic/History/mechanic_history_screen_module.dart';
 import 'package:driveresq/view/Mechanic/Home/mechanic_home_module.dart';
 import 'package:driveresq/view/Mechanic/Profile/profile_module.dart';
+import 'package:driveresq/view/Mechanic/bottomnavbar/mechanic_bottomnavbar.dart';
 import 'package:driveresq/view/selectRole/select_role_screen.dart';
 import 'package:driveresq/view/signup/mechanicSignup/mechanic_signup_screen_module.dart';
 import 'package:driveresq/view/splashscreen/splash_screen.dart';
@@ -25,20 +26,8 @@ class AppRoutes {
       page: () => MechanicSignupScreenModule(),
     ),
     GetPage(
-      name: RouteName.mechanicHomeScreen,
-      page: () => MechanicHomeModule(),
-    ),
-    GetPage(
-      name: RouteName.mechanicHistoryScreen,
-      page: () => MechanicHistoryScreenModule(),
-    ),
-    GetPage(
-      name: RouteName.mechanicChatScreen,
-      page: () => MechanicChatScreenModule(),
-    ),
-    GetPage(
-      name: RouteName.mechanicProfileScreen,
-      page: () => MechanicProfileModule(),
+      name: RouteName.mechanicBottomnavbar,
+      page: () => MechanicBottomnavbar(),
     ),
   ];
 }
