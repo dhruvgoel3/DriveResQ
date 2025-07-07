@@ -12,14 +12,21 @@ class RoundButton extends StatelessWidget {
     Key? key,
     required this.title,
     required this.onPressed,
-     this.height = 60,
-     this.width = 50,
-     this.ButtonColor = Colors.black,
-     this.TitleColor = Colors.white,
-  }) : super(key: key)
+    this.height = 60,
+    this.width = 50,
+    this.ButtonColor = Colors.black,
+    this.TitleColor = Colors.white,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(child: Container());
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(color: ButtonColor),
+      ),
+    );
   }
 }

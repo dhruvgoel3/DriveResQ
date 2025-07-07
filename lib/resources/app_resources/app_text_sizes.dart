@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppTextStyles {
-  AppTextStyles._(); // Private constructor
-
-  // Font sizes (in logical pixels, acts like sp)
+class AppTextSizes {
   static double extraMicroFontSize = 6;
   static double microFontSize = 8;
   static double extraSmallFontSize = 10;

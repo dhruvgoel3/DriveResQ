@@ -1,6 +1,6 @@
 class RouteName
 {
   static String splashScreen = '/';
-  static String loginScreen = '/login_screen';
+  static String selectRoleScreen = '/select_role_screen';
 
 }
