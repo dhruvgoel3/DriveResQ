@@ -52,13 +52,13 @@ class MechanicSignUpController extends GetxController {
     // If permission granted
     try {
       final pos = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
+        desiredAccuracy: LocationAccuracy.high,
+      );
       location.value = '${pos.latitude}, ${pos.longitude}';
     } catch (e) {
       location.value = 'Location Error: ${e.toString()}';
     }
   }
-
 
   Future<void> signUpWithEmail() async {
     if (!formKey.currentState!.validate()) return;
@@ -94,7 +94,6 @@ class MechanicSignUpController extends GetxController {
       isLoading.value = false;
     }
   }
-
 
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) return 'Email is required';

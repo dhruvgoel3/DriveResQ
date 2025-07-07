@@ -1,3 +1,6 @@
+import 'package:driveresq/resources/routes/app_route.dart';
+import 'package:driveresq/resources/routes/route_names.dart';
+import 'package:driveresq/view/login/mechaniclogin/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +13,6 @@ class MechanicSignupScreenModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Mechanic Sign Up")),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Obx(
@@ -18,6 +20,7 @@ class MechanicSignupScreenModule extends StatelessWidget {
             key: controller.formKey,
             child: ListView(
               children: [
+                SizedBox(height: 100),
                 CustomTextFormField(
                   hint: "Mechanic Name",
                   controller: controller.usernameController,
@@ -38,7 +41,7 @@ class MechanicSignupScreenModule extends StatelessWidget {
                   validator: controller.validatePassword,
                 ),
                 SizedBox(height: 12),
-                Text("Your Location: ${controller.location.value}"),
+                Text("Your Location: ${controller.location.value.toString()}"),
                 SizedBox(height: 12),
                 DropdownButtonFormField<String>(
                   value: controller.mechanicType.value,
@@ -68,6 +71,17 @@ class MechanicSignupScreenModule extends StatelessWidget {
                       : Text("Sign Up"),
                 ),
                 SizedBox(height: 12),
+                Row(
+                  children: [
+                    Text("Already have an account ?"),
+                    TextButton(
+                      onPressed: () {
+                        Get.to(() => MechanicLoginScreen());
+                      },
+                      child: Text("Login"),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),

@@ -29,5 +29,9 @@ class AppRoutes {
       name: RouteName.mechanicBottomnavbar,
       page: () => MechanicBottomnavbar(),
     ),
+    GetPage(
+      name: RouteName.mechanicLoginScreen,
+      page: () => MechanicLoginScreen(),
+    ),
   ];
 }
