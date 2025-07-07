@@ -1,5 +1,6 @@
 import 'package:driveresq/resources/routes/app_route.dart';
 import 'package:driveresq/resources/routes/route_names.dart';
+import 'package:driveresq/view/Mechanic/Home/mechanic_home_module.dart';
 import 'package:driveresq/view/login/mechaniclogin/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -63,9 +64,11 @@ class MechanicSignupScreenModule extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: controller.isLoading.value
+                  onPressed:
+                  controller.isLoading.value
                       ? null
                       : controller.signUpWithEmail,
+
                   child: controller.isLoading.value
                       ? CircularProgressIndicator(color: Colors.white)
                       : Text("Sign Up"),
