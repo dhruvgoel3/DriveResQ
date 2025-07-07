@@ -1,4 +1,5 @@
 import 'package:driveresq/resources/app_resources/app_colors.dart';
+import 'package:driveresq/resources/app_resources/text_styles.dart';
 import 'package:driveresq/widgets/components/user_role_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,21 +19,30 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SelectUserContainer(
-            title: "Mechanic",
-            onPressed: () {},
-            height: screenHeight * 0.2,
-          ),
-          SizedBox(height: 10),
-          SelectUserContainer(
-            title: "Driver  ",
-            onPressed: () {},
-            height: screenHeight * 0.2,
-          ),
-        ],
+      body: Padding(
+        padding: EdgeInsets.only(left: screenWidth * 0.05),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("Select your role",style: AppTextStyles.bodyText,),
+            SizedBox(height: screenHeight*0.07),
+
+            SelectUserContainer(
+              title: "Mechanic",
+              onPressed: () {},
+              height: screenHeight * 0.2,
+              width: screenWidth * 0.9,
+            ),
+            SizedBox(height: 20),
+            SelectUserContainer(
+              title: "Driver  ",
+              onPressed: () {},
+              height: screenHeight * 0.2,
+              width: screenWidth * 0.9,
+            ),
+          ],
+        ),
       ),
     );
   }

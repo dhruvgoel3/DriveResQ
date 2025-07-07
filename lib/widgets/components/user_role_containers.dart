@@ -16,7 +16,7 @@ class SelectUserContainer extends StatelessWidget {
     required this.title,
     required this.onPressed,
     this.height = 50,
-    this.width = double.infinity,
+    this.width = 150,
     this.buttonColor = Colors.blue,
     this.titleColor = Colors.white,
   }) : super(key: key);
@@ -40,15 +40,7 @@ class SelectUserContainer extends StatelessWidget {
             ),
           ],
         ),
-        child: Row(
-          children: [
-            Column(
-              children: [
-                Center(child: Text(title, style: AppTextStyles.ButtonTitle)),
-              ],
-            ),
-          ],
-        ),
+        child: Center(child: Text(title, style: AppTextStyles.ButtonTitle)),
       ),
     );
   }
