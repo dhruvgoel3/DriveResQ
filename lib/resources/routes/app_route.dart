@@ -39,11 +39,11 @@ class AppRoutes {
       page: () => DriverLoginScreenModule(),
     ),
     GetPage(
-      name: RouteName.mechanicSignUpScreen,
+      name: RouteName.driverSignUpScreen,
       page: () => DriverSignupScreenModule(),
     ),
     GetPage(
-      name: RouteName.mechanicBottomNavbar,
+      name: RouteName.driverBottomNavBar,
       page: () => DriverBottomNavBar(),
     ),
   ];
