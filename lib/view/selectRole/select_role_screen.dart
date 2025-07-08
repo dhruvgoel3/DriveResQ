@@ -29,24 +29,25 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
           children: [
             Text("Select your role", style: AppTextStyles.bodyText),
             SizedBox(height: screenHeight * 0.07),
-
             SelectUserContainer(
-              title: "Mechanic",
+              title: "Mechanic  ",
               onPressed: () {
                 controller.navigateToMechanicSignup();
               },
               height: screenHeight * 0.2,
               width: screenWidth * 0.9,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.05),
+
             SelectUserContainer(
-              title: "Driver  ",
+              title: "Driver",
               onPressed: () {
                 controller.navigateToDriverSignup();
               },
               height: screenHeight * 0.2,
               width: screenWidth * 0.9,
             ),
+            SizedBox(height: 20),
           ],
         ),
       ),
