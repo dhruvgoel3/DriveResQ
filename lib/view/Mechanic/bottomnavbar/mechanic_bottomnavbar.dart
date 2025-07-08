@@ -1,3 +1,4 @@
+import 'package:driveresq/resources/app_resources/app_colors.dart';
 import 'package:driveresq/view/Mechanic/Chat/mechanic_chat_module.dart';
 import 'package:driveresq/view/Mechanic/History/mechanic_history_screen_module.dart';
 import 'package:driveresq/view/Mechanic/Home/mechanic_home_module.dart';
@@ -26,13 +27,15 @@ class _FloatingNavBarAppState extends State<MechanicBottomnavbar> {
       extendBody: true, // Shows body behind nav bar
       body: _screens[_selectedIndex],
       bottomNavigationBar: FloatingNavbar(
-        backgroundColor: Colors.white,
-        selectedItemColor: Colors.deepPurple,
+        backgroundColor: AppColors.NavBarBackColor,
+        selectedItemColor: AppColors.DarkCamel,
         unselectedItemColor: Colors.grey,
         selectedBackgroundColor: Colors.deepPurple.withOpacity(0.1),
-        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        margin: EdgeInsets.symmetric(),
+
         borderRadius: 20,
         padding: EdgeInsets.symmetric(horizontal: 10),
+
         onTap: (int val) => setState(() => _selectedIndex = val),
         currentIndex: _selectedIndex,
         items: [

@@ -1,3 +1,4 @@
+import 'package:driveresq/resources/routes/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -59,7 +60,7 @@ class MechanicLoginController extends GetxController {
       );
 
       Get.snackbar("Success", "Login successful!");
-      // Navigate: Get.toNamed('/mechanicDashboard');
+      Get.toNamed(RouteName.mechanicBottomNavbar);
     } catch (e) {
       Get.snackbar("Login Failed", e.toString());
     } finally {

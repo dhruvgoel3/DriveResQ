@@ -1,6 +1,10 @@
 import 'dart:ui';
 
 class AppColors {
+  static Color DarkCamel = Color(0xFFF4A261);
+  static Color LightCamel = Color(0xFfFCEBD2);
+  static Color NavBarBackColor = Color(0xFF264653);
+
   static Color blackcolor = Color(0xff000000);
   static Color skyblue = Color(0xFF1E88E5);
   static Color cardColor = Color(0xFFE3F2FD);

@@ -26,12 +26,12 @@ class AppRoutes {
       page: () => MechanicSignupScreenModule(),
     ),
     GetPage(
-      name: RouteName.mechanicBottomnavbar,
-      page: () => MechanicBottomnavbar(),
-    ),
-    GetPage(
       name: RouteName.mechanicLoginScreen,
       page: () => MechanicLoginScreen(),
+    ),
+    GetPage(
+      name: RouteName.mechanicBottomNavbar,
+      page: () => MechanicBottomnavbar(),
     ),
   ];
 }

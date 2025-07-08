@@ -43,6 +43,11 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   floating_bottom_navigation_bar: ^1.5.2
   supabase_flutter: ^2.9.1
+  font_awesome_flutter: ^10.8.0
+  line_icons: ^2.0.3
+  eva_icons_flutter: ^3.1.0
+  material_design_icons_flutter: ^7.0.7296
+  connectivity_plus: ^6.1.4
 
 dev_dependencies:
   flutter_test:
