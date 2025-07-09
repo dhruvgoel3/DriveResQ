@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../resources/routes/route_names.dart';
+
 class DriverLoginController extends GetxController {
+
+  void navigateToDriverSignup() {
+    Get.toNamed(RouteName.driverSignUpScreen);
+  }
   final SupabaseClient supabase = Supabase.instance.client;
 
   final emailController = TextEditingController();
