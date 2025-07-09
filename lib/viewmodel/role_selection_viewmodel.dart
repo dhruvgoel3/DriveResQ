@@ -7,6 +7,6 @@ class RoleSelectionViewModel extends GetxController {
   }
 
   void navigateToDriverSignup() {
-    Get.toNamed(RouteName.driverSignUpScreen);
+    Get.toNamed(RouteName.driverBottomNavBar);
   }
 }

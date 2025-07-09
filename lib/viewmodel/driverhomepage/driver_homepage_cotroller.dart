@@ -9,6 +9,8 @@ class HelpRequest {
   String problem;
   String location;
   String status;
+  double? lat;
+  double? lng;
 
   HelpRequest({
     required this.area,
@@ -16,6 +18,8 @@ class HelpRequest {
     required this.problem,
     required this.location,
     this.status = 'draft',
+    this.lat,
+    this.lng,
   });
 }
 
@@ -23,22 +27,27 @@ class DriverDashboardController extends GetxController {
   final supabase = Supabase.instance.client;
   final helpRequests = <HelpRequest>[].obs;
 
-  // For dialog input
   final areaController = TextEditingController();
   final problemController = TextEditingController();
   final locationController = TextEditingController();
   final selectedType = ''.obs;
   final vehicleTypes = ['Car', 'Bike', 'Truck'];
 
-  void openHelpDialog() {
+  void openHelpDialog() async {
     areaController.clear();
     problemController.clear();
     locationController.clear();
     selectedType.value = '';
-    Get.dialog(_buildDialog());
+
+    // Optional: prefill location from GPS
+    Position position = await Geolocator.getCurrentPosition();
+    locationController.text =
+        "Lat: ${position.latitude}, Lng: ${position.longitude}";
+
+    Get.dialog(_buildDialog(position));
   }
 
-  Widget _buildDialog() {
+  Widget _buildDialog(Position position) {
     return AlertDialog(
       title: Text("Create Help Request"),
       content: SingleChildScrollView(
@@ -67,25 +76,24 @@ class DriverDashboardController extends GetxController {
             SizedBox(height: 8),
             TextField(
               controller: locationController,
-              decoration: InputDecoration(labelText: "Location (manual or GPS)"),
+              decoration: InputDecoration(
+                labelText: "Location (manual or GPS)",
+              ),
             ),
           ],
         ),
       ),
       actions: [
-        TextButton(
-          onPressed: () => Get.back(),
-          child: Text("Cancel"),
-        ),
+        TextButton(onPressed: () => Get.back(), child: Text("Cancel")),
         ElevatedButton(
-          onPressed: saveHelpRequest,
+          onPressed: () => saveHelpRequest(position),
           child: Text("Save"),
         ),
       ],
     );
   }
 
-  void saveHelpRequest() {
+  void saveHelpRequest(Position position) {
     if (areaController.text.isEmpty ||
         selectedType.value.isEmpty ||
         problemController.text.isEmpty ||
@@ -99,6 +107,8 @@ class DriverDashboardController extends GetxController {
       vehicleType: selectedType.value,
       problem: problemController.text,
       location: locationController.text,
+      lat: position.latitude,
+      lng: position.longitude,
     );
 
     helpRequests.add(request);
@@ -121,6 +131,8 @@ class DriverDashboardController extends GetxController {
         'location': request.location,
         'status': 'pending',
         'area': request.area,
+        'lat': request.lat,
+        'lng': request.lng,
       });
 
       Get.snackbar("SOS Sent", "Mechanics will be notified");

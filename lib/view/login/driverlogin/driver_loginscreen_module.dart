@@ -1,6 +1,7 @@
 import 'package:driveresq/widgets/components/mechanic_textformfields.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../resources/routes/route_names.dart';
 import '../../../viewmodel/authControllers/driver_login_controller.dart';
 
 class DriverLoginScreenModule extends StatelessWidget {
@@ -19,7 +20,7 @@ class DriverLoginScreenModule extends StatelessWidget {
                 hint: "Email",
                 controller: controller.emailController,
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 10),
               CustomTextFormField(
                 hint: "Email",
                 controller: controller.passwordController,
@@ -33,8 +34,9 @@ class DriverLoginScreenModule extends StatelessWidget {
                     ),
               TextButton(
                 onPressed: () {
-                  controller.navigateToDriverSignup();
+                  Get.toNamed(RouteName.driverSignUpScreen);
                 },
+
                 child: Text("Don't have an account? Sign up"),
               ),
             ],

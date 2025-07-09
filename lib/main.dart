@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: RouteName.driverSignUpScreen,
+      initialRoute: RouteName.splashScreen,
       getPages: AppRoutes.appRoutes(),
       title: 'DriverResQ',
       debugShowCheckedModeBanner: false,

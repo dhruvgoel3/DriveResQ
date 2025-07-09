@@ -5,10 +5,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../resources/routes/route_names.dart';
 
 class DriverLoginController extends GetxController {
-
-  void navigateToDriverSignup() {
-    Get.toNamed(RouteName.driverSignUpScreen);
-  }
   final SupabaseClient supabase = Supabase.instance.client;
 
   final emailController = TextEditingController();
@@ -31,6 +27,7 @@ class DriverLoginController extends GetxController {
     try {
       await supabase.auth.signInWithPassword(email: email, password: password);
       Get.snackbar("Success", "Logged in successfully");
+      Get.toNamed(RouteName.driverSignUpScreen);
     } catch (e) {
       Get.snackbar("Login Failed", e.toString());
     } finally {
