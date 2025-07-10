@@ -2,11 +2,11 @@ import 'package:driveresq/resources/routes/route_names.dart';
 import 'package:driveresq/view/Driver/bottomnavbar/mechanic_bottomnavbar.dart';
 import 'package:driveresq/view/Mechanic/bottomnavbar/mechanic_bottomnavbar.dart';
 import 'package:driveresq/view/login/driverlogin/driver_loginscreen_module.dart';
-import 'package:driveresq/view/selectRole/select_role_screen.dart';
 import 'package:driveresq/view/signup/mechanicSignup/mechanic_signup_screen_module.dart';
 import 'package:driveresq/view/splashscreen/splash_screen.dart';
 import 'package:get/get.dart';
 import '../../view/login/mechaniclogin/login_screen.dart';
+import '../../view/selectRole/select_role_screan.dart';
 import '../../view/signup/driversignup/driver_signup_screen_module.dart';
 
 class AppRoutes {

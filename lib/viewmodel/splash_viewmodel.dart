@@ -9,7 +9,7 @@ class SplashViewModel extends GetxController {
   }
 
   void _navigateToNext() async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 4));
     Get.offNamed(RouteName.selectRoleScreen);
   }
 }

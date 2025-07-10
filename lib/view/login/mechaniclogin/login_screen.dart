@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icon.dart';
 import '../../../viewmodel/authControllers/mechanic_login_controller.dart';
-import '../../../widgets/components/mechanic_textformfields.dart';
+import '../../../widgets/components/custom_textformfields.dart';
 
 class MechanicLoginScreen extends StatelessWidget {
   final controller = Get.put(MechanicLoginController());
@@ -22,6 +23,7 @@ class MechanicLoginScreen extends StatelessWidget {
                   controller: controller.userOrEmailController,
                   keyboardType: TextInputType.emailAddress,
                   validator: controller.validateUserOrEmail,
+                  icon: LineIcon(Icons.perm_identity, color: Colors.black),
                 ),
                 SizedBox(height: 12),
                 CustomTextFormField(
@@ -29,6 +31,7 @@ class MechanicLoginScreen extends StatelessWidget {
                   controller: controller.passwordController,
                   isObscure: true,
                   validator: controller.validatePassword,
+                  icon: LineIcon(Icons.lock, color: Colors.black),
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(

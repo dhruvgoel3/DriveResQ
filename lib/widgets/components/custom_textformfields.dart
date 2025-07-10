@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String hint;
+  final Icon icon;
   final TextEditingController controller;
   final bool isObscure;
   final TextInputType keyboardType;
@@ -10,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     Key? key,
     required this.hint,
+    required this.icon,
     required this.controller,
     this.isObscure = false,
     this.keyboardType = TextInputType.text,
@@ -25,6 +27,7 @@ class CustomTextFormField extends StatelessWidget {
       validator: validator,
       decoration: InputDecoration(
         hintText: hint,
+        prefixIcon: icon,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );

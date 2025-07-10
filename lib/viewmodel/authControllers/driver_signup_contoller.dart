@@ -11,9 +11,10 @@ class DriverSignUpController extends GetxController {
 
   final isLoading = false.obs;
 
-  final emailRegex = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}\$');
-  final passwordRegex = RegExp(r'^.{6,}\$');
-  final usernameRegex = RegExp(r'^[a-zA-Z0-9_]{3,16}\$');
+  final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+  final passwordRegex = RegExp(r'^.{6,}$');
+  final usernameRegex = RegExp(r'^[a-zA-Z0-9_]{3,16}$');
+
 
   Future<void> signUpDriver() async {
     final email = emailController.text.trim();
@@ -25,11 +26,17 @@ class DriverSignUpController extends GetxController {
       return;
     }
     if (!passwordRegex.hasMatch(password)) {
-      Get.snackbar("Invalid Password", "Password must be at least 6 characters");
+      Get.snackbar(
+        "Invalid Password",
+        "Password must be at least 6 characters",
+      );
       return;
     }
     if (!usernameRegex.hasMatch(username)) {
-      Get.snackbar("Invalid Username", "Username must be 3-16 characters, alphanumeric or underscore");
+      Get.snackbar(
+        "Invalid Username",
+        "Username must be 3-16 characters, alphanumeric or underscore",
+      );
       return;
     }
 

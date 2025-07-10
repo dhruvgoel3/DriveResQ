@@ -11,8 +11,8 @@ class DriverLoginController extends GetxController {
   final passwordController = TextEditingController();
   final isLoading = false.obs;
 
-  final emailRegex = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}\$');
-  final passwordRegex = RegExp(r'^.{6,}\$');
+  final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+  final passwordRegex = RegExp(r'^.{6,}$');
 
   Future<void> loginDriver() async {
     final email = emailController.text.trim();
@@ -27,7 +27,7 @@ class DriverLoginController extends GetxController {
     try {
       await supabase.auth.signInWithPassword(email: email, password: password);
       Get.snackbar("Success", "Logged in successfully");
-      Get.toNamed(RouteName.driverSignUpScreen);
+      Get.toNamed(RouteName.driverBottomNavBar);
     } catch (e) {
       Get.snackbar("Login Failed", e.toString());
     } finally {

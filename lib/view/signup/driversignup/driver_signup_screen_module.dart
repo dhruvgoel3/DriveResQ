@@ -1,5 +1,8 @@
+import 'package:driveresq/resources/routes/route_names.dart';
+import 'package:driveresq/widgets/components/custom_textformfields.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icon.dart';
 import '../../../viewmodel/authControllers/driver_signup_contoller.dart';
 
 class DriverSignupScreenModule extends StatelessWidget {
@@ -11,34 +14,41 @@ class DriverSignupScreenModule extends StatelessWidget {
       appBar: AppBar(title: Text("Driver Sign Up")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Obx(() => Column(
-          children: [
-            TextField(
-              controller: controller.usernameController,
-              decoration: InputDecoration(labelText: "Username"),
-            ),
-            TextField(
-              controller: controller.emailController,
-              decoration: InputDecoration(labelText: "Email"),
-            ),
-            TextField(
-              controller: controller.passwordController,
-              decoration: InputDecoration(labelText: "Password"),
-              obscureText: true,
-            ),
-            SizedBox(height: 20),
-            controller.isLoading.value
-                ? CircularProgressIndicator()
-                : ElevatedButton(
-              onPressed: controller.signUpDriver,
-              child: Text("Sign Up"),
-            ),
-            TextButton(
-              onPressed: () => Get.toNamed('/driver-login'),
-              child: Text("Already have an account? Login"),
-            ),
-          ],
-        )),
+        child: Obx(
+          () => Column(
+            children: [
+              CustomTextFormField(
+                hint: "Username",
+                controller: controller.usernameController,
+                icon: LineIcon(Icons.perm_identity, color: Colors.black),
+              ),
+              SizedBox(height: 15),
+              CustomTextFormField(
+                hint: "Email",
+                controller: controller.emailController,
+                icon: LineIcon(Icons.email_outlined, color: Colors.black),
+              ),
+              SizedBox(height: 15),
+              CustomTextFormField(
+                hint: "Password",
+                controller: controller.passwordController,
+                icon: LineIcon(Icons.lock, color: Colors.black),
+              ),
+              SizedBox(height: 15),
+              SizedBox(height: 20),
+              controller.isLoading.value
+                  ? CircularProgressIndicator()
+                  : ElevatedButton(
+                      onPressed: controller.signUpDriver,
+                      child: Text("Sign Up"),
+                    ),
+              TextButton(
+                onPressed: () => Get.toNamed(RouteName.driverLoginScreen),
+                child: Text("Already have an account? Login"),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

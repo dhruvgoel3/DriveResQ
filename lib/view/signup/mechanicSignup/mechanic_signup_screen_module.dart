@@ -4,9 +4,10 @@ import 'package:driveresq/view/Mechanic/Home/mechanic_home_module.dart';
 import 'package:driveresq/view/login/mechaniclogin/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icon.dart';
 
 import '../../../viewmodel/authControllers/mechanic_signup_controller.dart';
-import '../../../widgets/components/mechanic_textformfields.dart';
+import '../../../widgets/components/custom_textformfields.dart';
 
 class MechanicSignupScreenModule extends StatelessWidget {
   final controller = Get.put(MechanicSignUpController());
@@ -26,6 +27,7 @@ class MechanicSignupScreenModule extends StatelessWidget {
                   hint: "Mechanic Name",
                   controller: controller.usernameController,
                   validator: controller.validateUsername,
+                  icon: LineIcon(Icons.perm_identity, color: Colors.black),
                 ),
                 SizedBox(height: 12),
                 CustomTextFormField(
@@ -33,6 +35,7 @@ class MechanicSignupScreenModule extends StatelessWidget {
                   controller: controller.emailController,
                   keyboardType: TextInputType.emailAddress,
                   validator: controller.validateEmail,
+                  icon: LineIcon(Icons.mail_outline, color: Colors.black),
                 ),
                 SizedBox(height: 12),
                 CustomTextFormField(
@@ -40,6 +43,7 @@ class MechanicSignupScreenModule extends StatelessWidget {
                   controller: controller.passwordController,
                   isObscure: true,
                   validator: controller.validatePassword,
+                  icon: LineIcon(Icons.lock_rounded, color: Colors.black),
                 ),
                 SizedBox(height: 12),
                 Text("Your Location: ${controller.location.value.toString()}"),
@@ -64,8 +68,7 @@ class MechanicSignupScreenModule extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed:
-                  controller.isLoading.value
+                  onPressed: controller.isLoading.value
                       ? null
                       : controller.signUpWithEmail,
 

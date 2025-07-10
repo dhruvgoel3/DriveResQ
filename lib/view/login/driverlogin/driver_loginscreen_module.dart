@@ -1,6 +1,7 @@
-import 'package:driveresq/widgets/components/mechanic_textformfields.dart';
+import 'package:driveresq/widgets/components/custom_textformfields.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icon.dart';
 import '../../../resources/routes/route_names.dart';
 import '../../../viewmodel/authControllers/driver_login_controller.dart';
 
@@ -19,10 +20,12 @@ class DriverLoginScreenModule extends StatelessWidget {
               CustomTextFormField(
                 hint: "Email",
                 controller: controller.emailController,
+                icon: LineIcon(Icons.email_outlined,color: Colors.black,),
               ),
               CustomTextFormField(
                 hint: "Email",
                 controller: controller.passwordController,
+                icon: LineIcon(Icons.lock,color: Colors.black,),
               ),
               SizedBox(height: 20),
               controller.isLoading.value

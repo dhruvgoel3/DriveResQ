@@ -1,6 +1,8 @@
 import 'dart:ffi';
 
+import 'package:driveresq/resources/app_resources/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RoundButton extends StatelessWidget {
   final String title;
@@ -25,7 +27,20 @@ class RoundButton extends StatelessWidget {
       child: Container(
         width: width,
         height: height,
-        decoration: BoxDecoration(color: ButtonColor),
+        decoration: BoxDecoration(
+          color: AppColors.DarkCamel,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Center(
+          child: Text(
+            title,
+            style: GoogleFonts.poppins(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:geocoding/geocoding.dart';
 
 class HelpRequest {
   String area;
@@ -33,20 +34,40 @@ class DriverDashboardController extends GetxController {
   final selectedType = ''.obs;
   final vehicleTypes = ['Car', 'Bike', 'Truck'];
 
+  /// ✅ Reverse geocoding: Get readable address from lat/lng
+  Future<String> getAddressFromLatLng(double lat, double lng) async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(lat, lng);
+      final place = placemarks.first;
+      return "${place.name}, ${place.locality}, ${place.administrativeArea}";
+    } catch (e) {
+      return "Unknown location";
+    }
+  }
+
+  /// ✅ Open Help Request Dialog with prefilled location from GPS
   void openHelpDialog() async {
     areaController.clear();
     problemController.clear();
     locationController.clear();
     selectedType.value = '';
 
-    // Optional: prefill location from GPS
+    // Get user location
     Position position = await Geolocator.getCurrentPosition();
-    locationController.text =
-        "Lat: ${position.latitude}, Lng: ${position.longitude}";
+
+    // Get address from lat/lng
+    String readableLocation = await getAddressFromLatLng(
+      position.latitude,
+      position.longitude,
+    );
+
+    // Prefill location field with address
+    locationController.text = readableLocation;
 
     Get.dialog(_buildDialog(position));
   }
 
+  /// ✅ Help Request Input Form UI
   Widget _buildDialog(Position position) {
     return AlertDialog(
       title: Text("Create Help Request"),
@@ -93,6 +114,7 @@ class DriverDashboardController extends GetxController {
     );
   }
 
+  /// ✅ Save Help Request to local list
   void saveHelpRequest(Position position) {
     if (areaController.text.isEmpty ||
         selectedType.value.isEmpty ||
@@ -115,6 +137,7 @@ class DriverDashboardController extends GetxController {
     Get.back(); // close dialog
   }
 
+  /// ✅ Send SOS to Supabase
   Future<void> sendSOS(HelpRequest request) async {
     try {
       final user = supabase.auth.currentUser;
