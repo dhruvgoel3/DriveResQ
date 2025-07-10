@@ -20,7 +20,6 @@ class DriverLoginScreenModule extends StatelessWidget {
                 hint: "Email",
                 controller: controller.emailController,
               ),
-              SizedBox(height: 10),
               CustomTextFormField(
                 hint: "Email",
                 controller: controller.passwordController,

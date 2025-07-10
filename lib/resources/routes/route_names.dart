@@ -7,6 +7,6 @@ class RouteName {
   static String mechanicLoginScreen = '/mechanic_login_screen';
   static String mechanicBottomNavbar = '/mechanic_bottom_nav_bar';
   static String driverSignUpScreen = '/driver_signup_screen';
-  static String driverLoginScreen = '/driver_signup_screen';
+  static String driverLoginScreen = '/driver_login_screen';
   static String driverBottomNavBar = '/driver_bottom_nav_bar';
 }
