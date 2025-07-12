@@ -34,7 +34,6 @@ class DriverDashboardController extends GetxController {
   final selectedType = ''.obs;
   final vehicleTypes = ['Car', 'Bike', 'Truck'];
 
-  /// ✅ Reverse geocoding: Get readable address from lat/lng
   Future<String> getAddressFromLatLng(double lat, double lng) async {
     try {
       List<Placemark> placemarks = await placemarkFromCoordinates(lat, lng);
@@ -45,29 +44,30 @@ class DriverDashboardController extends GetxController {
     }
   }
 
-  /// ✅ Open Help Request Dialog with prefilled location from GPS
   void openHelpDialog() async {
     areaController.clear();
     problemController.clear();
     locationController.clear();
     selectedType.value = '';
 
-    // Get user location
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      await Geolocator.requestPermission();
+    }
+
     Position position = await Geolocator.getCurrentPosition();
 
-    // Get address from lat/lng
     String readableLocation = await getAddressFromLatLng(
       position.latitude,
       position.longitude,
     );
 
-    // Prefill location field with address
     locationController.text = readableLocation;
 
     Get.dialog(_buildDialog(position));
   }
 
-  /// ✅ Help Request Input Form UI
   Widget _buildDialog(Position position) {
     return AlertDialog(
       title: Text("Create Help Request"),
@@ -114,7 +114,6 @@ class DriverDashboardController extends GetxController {
     );
   }
 
-  /// ✅ Save Help Request to local list
   void saveHelpRequest(Position position) {
     if (areaController.text.isEmpty ||
         selectedType.value.isEmpty ||
@@ -134,10 +133,9 @@ class DriverDashboardController extends GetxController {
     );
 
     helpRequests.add(request);
-    Get.back(); // close dialog
+    Get.back();
   }
 
-  /// ✅ Send SOS to Supabase
   Future<void> sendSOS(HelpRequest request) async {
     try {
       final user = supabase.auth.currentUser;
@@ -146,9 +144,11 @@ class DriverDashboardController extends GetxController {
         return;
       }
 
+      print("Sending SOS with lat: ${request.lat}, lng: ${request.lng}");
+
       await supabase.from('requests').insert({
-        'driver_id': user.id,
-        'driver_name': user.email,
+        'driver_id': user.id, //  this is a valid UUID
+        'driver_name': user.email, // keep this for name/email
         'vehicle_type': request.vehicleType,
         'description': request.problem,
         'location': request.location,

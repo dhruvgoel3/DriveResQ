@@ -27,11 +27,15 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          // Text("DriveResQ"),
-          // LineIcon(CupertinoIcons.hammer),
-          SizedBox(height: screenHeight * 0.33),
-          Image.asset("assets/Car Mechanic (1).png", height: 200),
-          SizedBox(height: screenHeight * 0.119),
+          SizedBox(height: screenHeight * 0.088),
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: Image.asset(
+              "assets/DriveResQ_Simple_Logo_with_Location_Pin-removebg-preview.png",
+              height: screenHeight * 0.6,
+            ),
+          ),
+          SizedBox(height: screenHeight * 0.0),
           Stack(
             children: [
               Container(

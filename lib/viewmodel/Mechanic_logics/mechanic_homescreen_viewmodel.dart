@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'dart:math' show cos, sqrt, asin;
 
@@ -22,22 +21,27 @@ class MechanicHomeController extends GetxController {
   Future<void> fetchLocationAndRequests() async {
     isLoading.value = true;
     try {
-      // ✅ Step 1: Get current mechanic location
-      Position pos = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
+        await Geolocator.requestPermission();
+      }
+
+      Position pos = await Geolocator.getCurrentPosition();
       mechanicLat = pos.latitude;
       mechanicLng = pos.longitude;
 
-      // ✅ Step 2: Get requests from Supabase
+      print("Mechanic location: $mechanicLat, $mechanicLng");
+
       final response = await supabase
           .from('requests')
           .select()
-          .eq('status', 'pending');
+          .eq('status', 'pending')
+          .order('created_at', ascending: false);
 
-      // ✅ Step 3: Filter by distance
       List filtered = [];
       for (var req in response) {
+        print("Request at: ${req['lat']}, ${req['lng']}");
+
         if (req['lat'] != null && req['lng'] != null) {
           double distance = calculateDistance(
             mechanicLat,
@@ -45,10 +49,14 @@ class MechanicHomeController extends GetxController {
             req['lat'],
             req['lng'],
           );
-          if (distance <= 10.0) {
-            req['distance'] = distance.toStringAsFixed(2);
-            filtered.add(req);
-          }
+          print("Calculated distance: $distance km");
+
+          // 🚨 TEMPORARY: include all requests for testing
+          // Remove condition after testing
+          // if (distance <= 10.0) {
+          req['distance'] = distance.toStringAsFixed(2);
+          filtered.add(req);
+          // }
         }
       }
 
@@ -62,12 +70,10 @@ class MechanicHomeController extends GetxController {
 
   double calculateDistance(lat1, lon1, lat2, lon2) {
     const p = 0.0174533;
-    final a =
-        0.5 -
+    final a = 0.5 -
         cos((lat2 - lat1) * p) / 2 +
-        cos(lat1 * p) * cos(lat2 * p) * (1 - cos((lon2 - lon1) * p)) / 2;
-    return 12742 * asin(sqrt(a)); // in km
+        cos(lat1 * p) * cos(lat2 * p) *
+            (1 - cos((lon2 - lon1) * p)) / 2;
+    return 12742 * asin(sqrt(a));
   }
 }
-
-//done
