@@ -1,6 +1,8 @@
+import 'package:driveresq/resources/app_resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
+import '../../../resources/app_resources/text_styles.dart';
 import '../../../viewmodel/authControllers/mechanic_login_controller.dart';
 import '../../../widgets/components/custom_textformfields.dart';
 
@@ -10,7 +12,7 @@ class MechanicLoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Mechanic Login")),
+      backgroundColor: AppColors.LightCamel,
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Obx(
@@ -18,6 +20,12 @@ class MechanicLoginScreen extends StatelessWidget {
             key: controller.formKey,
             child: ListView(
               children: [
+                SizedBox(height: 200),
+                Padding(
+                  padding: const EdgeInsets.only(left: 85),
+                  child: Text("Login Here", style: AppTextStyles.headingLarge),
+                ),
+                SizedBox(height: 60),
                 CustomTextFormField(
                   hint: "Username or Email",
                   controller: controller.userOrEmailController,
@@ -35,12 +43,32 @@ class MechanicLoginScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.DarkCamel,
+                  ),
                   onPressed: controller.isLoading.value
                       ? null
                       : controller.loginUser,
                   child: controller.isLoading.value
                       ? CircularProgressIndicator(color: Colors.white)
-                      : Text("Login"),
+                      : Text("Login", style: AppTextStyles.buttonText),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 40),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Don't have an account ?",
+                        style: AppTextStyles.normalText2,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Get.to(() => MechanicLoginScreen());
+                        },
+                        child: Text("SignUp", style: AppTextStyles.normalText),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

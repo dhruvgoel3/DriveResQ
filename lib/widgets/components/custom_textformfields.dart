@@ -1,3 +1,5 @@
+import 'package:driveresq/resources/app_resources/app_colors.dart';
+import 'package:driveresq/resources/app_resources/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -26,9 +28,17 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       validator: validator,
       decoration: InputDecoration(
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black),
+          borderRadius: BorderRadius.circular(12),
+        ),
         hintText: hint,
+        hintStyle: AppTextStyles.hintTextStyle,
         prefixIcon: icon,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: AppColors.blackcolor),
+        ),
       ),
     );
   }

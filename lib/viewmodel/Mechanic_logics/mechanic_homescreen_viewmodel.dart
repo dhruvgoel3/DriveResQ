@@ -62,13 +62,12 @@ class MechanicHomeController extends GetxController {
 
   double calculateDistance(lat1, lon1, lat2, lon2) {
     const p = 0.0174533;
-    final a = 0.5 -
+    final a =
+        0.5 -
         cos((lat2 - lat1) * p) / 2 +
-        cos(lat1 * p) *
-            cos(lat2 * p) *
-            (1 - cos((lon2 - lon1) * p)) /
-            2;
+        cos(lat1 * p) * cos(lat2 * p) * (1 - cos((lon2 - lon1) * p)) / 2;
     return 12742 * asin(sqrt(a)); // in km
   }
 }
+
 //done
