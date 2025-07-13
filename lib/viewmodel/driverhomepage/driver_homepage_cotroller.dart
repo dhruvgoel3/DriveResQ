@@ -138,17 +138,19 @@ class DriverDashboardController extends GetxController {
 
   Future<void> sendSOS(HelpRequest request) async {
     try {
-      final user = supabase.auth.currentUser;
+      final user = Supabase.instance.client.auth.currentUser;
       if (user == null) {
         Get.snackbar("Login Required", "You must login first");
         return;
       }
 
-      print("Sending SOS with lat: ${request.lat}, lng: ${request.lng}");
+      // Debugging logs
+      print("USER ID: ${user.id}");
+      print("USER EMAIL: ${user.email}");
 
-      await supabase.from('requests').insert({
-        'driver_id': user.id, //  this is a valid UUID
-        'driver_name': user.email, // keep this for name/email
+      await Supabase.instance.client.from('requests').insert({
+        'driver_id': user.id, // ✅ UUID
+        'driver_name': user.email, // ✅ email
         'vehicle_type': request.vehicleType,
         'description': request.problem,
         'location': request.location,
@@ -162,6 +164,7 @@ class DriverDashboardController extends GetxController {
       helpRequests.remove(request);
     } catch (e) {
       Get.snackbar("Error", "Failed to send request: $e");
+      print("SEND SOS ERROR: $e");
     }
   }
 }
