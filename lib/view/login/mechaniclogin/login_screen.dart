@@ -2,8 +2,8 @@ import 'package:driveresq/resources/app_resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
+import '../../../controllers/authControllers/mechanic_login_controller.dart';
 import '../../../resources/app_resources/text_styles.dart';
-import '../../../viewmodel/authControllers/mechanic_login_controller.dart';
 import '../../../widgets/components/custom_textformfields.dart';
 
 class MechanicLoginScreen extends StatelessWidget {

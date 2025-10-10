@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../viewmodel/Mechanic_logics/mechanic_homescreen_viewmodel.dart';
+import '../../../controllers/Mechanic_logics/mechanic_homescreen_viewmodel.dart';
 
 class MechanicHomeModule extends StatelessWidget {
   final controller = Get.put(MechanicHomeController());

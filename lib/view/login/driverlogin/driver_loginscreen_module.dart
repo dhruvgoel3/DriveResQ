@@ -2,8 +2,8 @@ import 'package:driveresq/widgets/components/custom_textformfields.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
+import '../../../controllers/authControllers/driver_login_controller.dart';
 import '../../../resources/routes/route_names.dart';
-import '../../../viewmodel/authControllers/driver_login_controller.dart';
 
 class DriverLoginScreenModule extends StatelessWidget {
   final controller = Get.put(DriverLoginController());

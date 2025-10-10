@@ -4,7 +4,7 @@ import 'package:driveresq/view/login/mechaniclogin/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
-import '../../../viewmodel/authControllers/mechanic_signup_controller.dart';
+import '../../../controllers/authControllers/mechanic_signup_controller.dart';
 import '../../../widgets/components/custom_textformfields.dart';
 
 class MechanicSignupScreenModule extends StatelessWidget {

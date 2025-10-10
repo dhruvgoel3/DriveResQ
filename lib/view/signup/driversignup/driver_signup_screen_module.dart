@@ -3,7 +3,7 @@ import 'package:driveresq/widgets/components/custom_textformfields.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
-import '../../../viewmodel/authControllers/driver_signup_contoller.dart';
+import '../../../controllers/authControllers/driver_signup_contoller.dart';
 
 class DriverSignupScreenModule extends StatelessWidget {
   final controller = Get.put(DriverSignUpController());
