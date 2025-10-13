@@ -1,4 +1,5 @@
 import 'package:driveresq/resources/routes/route_names.dart';
+import 'package:driveresq/view/Driver/Home/driver_homesreen_module.dart';
 import 'package:driveresq/widgets/components/custom_textformfields.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,7 +44,10 @@ class DriverSignupScreenModule extends StatelessWidget {
                       child: Text("Sign Up"),
                     ),
               TextButton(
-                onPressed: () => Get.toNamed(RouteName.driverLoginScreen),
+                onPressed: () {
+                  Get.to(() => DriverDashboardScreen());
+                },
+                // onPressed: () => Get.toNamed(RouteName.driverLoginScreen),
                 child: Text("Already have an account? Login"),
               ),
             ],

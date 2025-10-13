@@ -1,5 +1,6 @@
 import 'package:driveresq/resources/app_resources/app_colors.dart';
 import 'package:driveresq/resources/app_resources/text_styles.dart';
+import 'package:driveresq/view/Mechanic/bottomnavbar/mechanic_bottomnavbar.dart';
 import 'package:driveresq/view/login/mechaniclogin/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -100,7 +101,7 @@ class MechanicSignupScreenModule extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-                          Get.to(() => MechanicLoginScreen());
+                          Get.to(() => MechanicBottomnavbar());
                         },
                         child: Text("Login", style: AppTextStyles.normalText),
                       ),
