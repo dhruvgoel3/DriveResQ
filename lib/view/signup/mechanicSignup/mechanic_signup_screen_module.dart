@@ -78,17 +78,23 @@ class MechanicSignupScreenModule extends StatelessWidget {
                       val == null ? "Please select mechanic type" : null,
                 ),
                 SizedBox(height: 20),
+                // ElevatedButton(
+                //   style: ElevatedButton.styleFrom(
+                //     backgroundColor: AppColors.DarkCamel,
+                //   ),
+                //   onPressed: controller.isLoading.value
+                //       ? null
+                //       : controller.signUpWithEmail,
+                //
+                //   child: controller.isLoading.value
+                //       ? CircularProgressIndicator(color: Colors.white)
+                //       : Text("Sign Up", style: AppTextStyles.buttonText),
+                // ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.DarkCamel,
-                  ),
-                  onPressed: controller.isLoading.value
-                      ? null
-                      : controller.signUpWithEmail,
-
-                  child: controller.isLoading.value
-                      ? CircularProgressIndicator(color: Colors.white)
-                      : Text("Sign Up", style: AppTextStyles.buttonText),
+                  onPressed: () {
+                    Get.to(() => MechanicBottomnavbar());
+                  },
+                  child: Text("Sign Up", style: AppTextStyles.buttonText),
                 ),
                 SizedBox(height: 5),
                 Padding(

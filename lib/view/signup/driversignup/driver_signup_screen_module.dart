@@ -40,14 +40,13 @@ class DriverSignupScreenModule extends StatelessWidget {
               controller.isLoading.value
                   ? CircularProgressIndicator()
                   : ElevatedButton(
-                      onPressed: controller.signUpDriver,
+                      onPressed: () {
+                        Get.to(() => DriverDashboardScreen());
+                      },
                       child: Text("Sign Up"),
                     ),
               TextButton(
-                onPressed: () {
-                  Get.to(() => DriverDashboardScreen());
-                },
-                // onPressed: () => Get.toNamed(RouteName.driverLoginScreen),
+                onPressed: () => Get.toNamed(RouteName.driverLoginScreen),
                 child: Text("Already have an account? Login"),
               ),
             ],
