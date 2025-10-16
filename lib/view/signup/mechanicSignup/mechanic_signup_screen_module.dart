@@ -122,4 +122,3 @@ class MechanicSignupScreenModule extends StatelessWidget {
     );
   }
 }
-// khtrnak code ha bhaiya
